@@ -81,10 +81,14 @@ public class HttpServer {
         @Override
         public Response serve(IHTTPSession session) {
 
+            private static final String MIME_TYPE_HTML = "text/html";
+
+
             if (audioFileToServe == null) {
                 Log.e(TAG, "Audio file to serve null");
-                return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/html", "File not found");
+                return newFixedLengthResponse(Response.Status.NOT_FOUND, MIME_TYPE_HTML, "File not found");
             }
+
 
             String uri = session.getUri();
             if (uri.contains("audio")) {
