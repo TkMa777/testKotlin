@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 class DummyNotificationHelper {
 
-    private static int NOTIFICATION_ID_DUMMY = 5;
+    private static int notificationIdDummy = 5;
 
     private boolean isShowingDummyNotification;
     private boolean isForegroundedByApp = false;
