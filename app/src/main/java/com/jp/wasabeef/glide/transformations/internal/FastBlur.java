@@ -21,7 +21,9 @@ import android.graphics.Bitmap;
 public class FastBlur {
 
     public static Bitmap blur(Bitmap sentBitmap, int radius, boolean canReuseInBitmap) {
-
+        if (radius < 1) {
+            return null;
+        }
         // Stack Blur v1.0 from
         // http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html
         //
