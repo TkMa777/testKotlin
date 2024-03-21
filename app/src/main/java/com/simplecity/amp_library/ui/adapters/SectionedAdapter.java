@@ -8,6 +8,8 @@ import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
 public class SectionedAdapter extends ViewModelAdapter implements FastScrollRecyclerView.SectionedAdapter {
 
+    private List<ViewModel> items = new ArrayList<>();
+
     @NonNull
     @Override
     public String getSectionName(int position) {
@@ -19,5 +21,9 @@ public class SectionedAdapter extends ViewModelAdapter implements FastScrollRecy
         }
 
         return "";
+    }
+
+    public void addItems(List<ViewModel> newItems) {
+        items.addAll(newItems);
     }
 }
