@@ -27,17 +27,15 @@ public class ThemeUtils {
 
         themes.add(new Theme(6, "grey_900", "teal_A700", false, R.color.md_grey_900, R.color.md_teal_A700));
         themes.add(new Theme(7, "grey_900", "teal_A700", true, R.color.md_grey_900, R.color.md_teal_A700));
-
-        return themes.get(new Random().nextInt(themes.size()));
     }
 
     public static class Theme {
 
-        public int id;
-        public String primaryColorName;
-        public String accentColorName;
+        public static final int ID;
+        public static final String PRIMARYCOL; // Присвойте начальное значение
+        public static final String ACCENT;
 
-        public boolean isDark;
+        public static final boolean ISDARK;
 
         @ColorRes
         public int primaryColor;
@@ -45,9 +43,8 @@ public class ThemeUtils {
         @ColorRes
         public int accentColor;
 
-        Theme(int id, String primaryColorName, String accentColorName, boolean isDark, int primaryColor, int accentColor) {
+        Theme(int id, String accentColorName, boolean isDark, int primaryColor, int accentColor) {
             this.id = id;
-            this.primaryColorName = primaryColorName;
             this.accentColorName = accentColorName;
             this.isDark = isDark;
             this.primaryColor = primaryColor;

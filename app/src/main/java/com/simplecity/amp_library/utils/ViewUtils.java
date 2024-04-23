@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import com.simplecity.amp_library.rx.UnsafeAction;
 
-public class ViewUtils {
+class ViewUtils {
+    private ViewUtils() {
+    }
 
     public static void fadeOut(View view, @Nullable UnsafeAction action) {
 
