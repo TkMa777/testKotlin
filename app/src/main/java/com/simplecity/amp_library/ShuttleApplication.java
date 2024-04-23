@@ -74,7 +74,7 @@ public class ShuttleApplication extends DaggerApplication {
 
     private RefWatcher refWatcher;
 
-    public Map<String, UserSelectedArtwork> userSelectedArtwork = new HashMap<>();
+    static final Map<String, UserSelectedArtwork> userSelectedArtwork = new HashMap<>();
 
 
     private static Logger jaudioTaggerLogger1 = Logger.getLogger("org.jaudiotagger.audio");
@@ -104,15 +104,10 @@ public class ShuttleApplication extends DaggerApplication {
         }
 
         RxDogTag.install();
-        if (BuildConfig.DEBUG) {
-            // enableStrictMode();
-        }
 
         refWatcher = LeakCanary.install(this);
-        // workaround to fix InputMethodManager leak as suggested by LeakCanary lib
         InputMethodManagerLeaks.fixFocusedViewLeak(this);
 
-        //Crashlytics
         CrashlyticsCore crashlyticsCore = new CrashlyticsCore.Builder()
                 .disabled(BuildConfig.DEBUG)
                 .build();
@@ -123,13 +118,10 @@ public class ShuttleApplication extends DaggerApplication {
                         .answers(new Answers())
                         .build());
 
-        // Firebase
         FirebaseApp.initializeApp(this);
         FirebaseAnalytics.getInstance(this);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        // we cannot call setDefaultValues for multiple fragment based XML preference
-        // files with readAgain flag set to false, so always check KEY_HAS_SET_DEFAULT_VALUES
         if (!prefs.getBoolean(PreferenceManager.KEY_HAS_SET_DEFAULT_VALUES, false)) {
             PreferenceManager.setDefaultValues(this, R.xml.settings_headers, true);
             PreferenceManager.setDefaultValues(this, R.xml.settings_artwork, true);
@@ -216,9 +208,6 @@ public class ShuttleApplication extends DaggerApplication {
     public String getVersion() {
         try {
             return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-        } catch (PackageManager.NameNotFoundException | NullPointerException ignored) {
-
-        }
         return "unknown";
     }
 
@@ -292,10 +281,6 @@ public class ShuttleApplication extends DaggerApplication {
 
             selection.append(")");
 
-            try {
-                getContentResolver().delete(PlayCountTable.URI, selection.toString(), null);
-            } catch (IllegalArgumentException ignored) {
-            }
         });
     }
 
