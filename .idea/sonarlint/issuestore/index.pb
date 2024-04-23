@@ -49,3 +49,7 @@ r
 Bapp/src/main/java/com/simplecity/amp_library/utils/ThemeUtils.java,f/f/ff8b09272903f0f29460579ae5bd0971c5f41fba
 s
 Capp/src/main/java/com/simplecity/amp_library/utils/StringUtils.java,4/4/443812ba43240a8e9da6daade0aaa739665a860a
+Q
+!app/src/main/assets/web/info.html,f/1/f157422a74df69e450101b6159852a6e6eac0b22
+V
+&app/src/main/assets/web/info_dark.html,2/1/2153253e9bad28ab1e6ed6ff006548ccfca4646b
